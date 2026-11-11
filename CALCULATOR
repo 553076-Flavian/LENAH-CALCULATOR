@@ -1,0 +1,49 @@
+program SimpleCalculator;
+
+var
+  num1, num2, result: Real;
+  op: Char;
+
+begin
+  Writeln('=== Simple Pascal Calculator ===');
+  
+  { Get user inputs }
+  Write('Enter first number: ');
+  Readln(num1);
+  
+  Write('Enter operator (+, -, *, /): ');
+  Readln(op);
+  
+  Write('Enter second number: ');
+  Readln(num2);
+  
+  { Perform calculation based on operator }
+  case op of
+    '+': result := num1 + num2;
+    '-': result := num1 - num2;
+    '*': result := num1 * num2;
+    '/': 
+      begin
+        if num2 = 0 then
+        begin
+          Writeln('Error: Division by zero is not allowed.');
+          Exit;
+        end
+        else
+          result := num1 / num2;
+      end;
+  else
+    begin
+      Writeln('Error: Invalid operator entered.');
+      Exit;
+    end;
+  end;
+
+  { Display result formatted to 2 decimal places }
+  Writeln('--------------------------------');
+  Writeln('Result: ', num1:0:2, ' ', op, ' ', num2:0:2, ' = ', result:0:2);
+  Writeln('--------------------------------');
+  
+  Writeln('Press Enter to exit...');
+  Readln;
+end.
